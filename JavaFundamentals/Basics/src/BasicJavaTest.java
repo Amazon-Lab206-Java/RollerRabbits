@@ -1,6 +1,6 @@
 public class BasicJavaTest {
 
-    public static void main(int[] String[]) {
+    public static void main(String[] args) {
         BasicJava basics = new BasicJava();
 
         basics.oneTo255();

@@ -11,7 +11,7 @@ public class BasicJava {
 
     //    print odd numbers between between 1 - 255
     public void odds() {
-        for (int i = 1; i < 256; i++) {
+        for (int i = 1; i < 256; i+=2) {
             System.out.println(i);
         }
     }
@@ -27,9 +27,7 @@ public class BasicJava {
     public void iterateArray(int[] givenArray) {
         int length = givenArray.length;
 
-        for (int i = 0;
-             i < length;
-             i++) {
+        for (int i = 0; i < length; i++) {
             System.out.println(givenArray[i]);
         }
     }
@@ -87,9 +85,9 @@ public class BasicJava {
 
         for (int i = 0; i < length; i++) {
             givenArray[i] *= givenArray[i];
-        }
-        System.out.println(givenArray);
 
+            System.out.println(givenArray[i]);
+        }
     }
 
     //    elliminate negative arrays

@@ -1,34 +1,12 @@
 import java.util.*;
+import java.util.stream.Collectors;
 
 public class PuzzleJava {
 
-    //sum of all numbers in the array
-
-    //return an array that only includes numbers that are greater than 10.
-
-    //shuffle array and print the name of each person (huh?)
-    //return array with names that are longer than 5 characters.
-
-    //shuffle the alphabets, display the last letter of the array.
-    //display the first letter of the array.
-    //if first letter in array is a vowel, display a message.
-
-    //generate and return an array with 10 random numbers between 55 -100.
-
-    //" 10 random numbers between 55 to 100 and have it sorted (smallest in the beginning)
-    //display all numbers in array
-    //display the min value in the array as well as max value
-
-    //random string that is 5 characters long
-    //array with 10 random strings that are each 5 characters long.
-}
-import java.util.*;
-
-public class PuzzlingJava {
-
-    public ArrayList<Integer> greaterThanTen(int[] givenArray) {
+    public List<Integer> greaterThanTen(int[] givenArray) {
         ArrayList<Integer> filteredList = new ArrayList<Integer>();
         int sum = 0;
+
 
         for (int val : givenArray) {
             sum += val;
@@ -115,14 +93,14 @@ public class PuzzlingJava {
     }
 
     public String genRandomString() {
-        return PuzzlingJava.randomStringHelper();
+        return PuzzleJava.randomStringHelper();
     }
 
     public ArrayList<String> gen10RandString() {
         ArrayList<String> resultArray = new ArrayList<String>();
 
         for (int i = 0; i < 10; i++) {
-            resultArray.add(PuzzlingJava.randomStringHelper());
+            resultArray.add(PuzzleJava.randomStringHelper());
         }
 
         return resultArray;

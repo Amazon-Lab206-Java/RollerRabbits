@@ -3,10 +3,12 @@
   <component name="ProjectModuleManager">
     <modules>
       <module fileurl="file://$PROJECT_DIR$/Basics/Basics.iml" filepath="$PROJECT_DIR$/Basics/Basics.iml" />
+      <module fileurl="file://$PROJECT_DIR$/Basics/src/Exceptions.iml" filepath="$PROJECT_DIR$/Basics/src/Exceptions.iml" />
       <module fileurl="file://$PROJECT_DIR$/FizzBuzz/FizzBuzz.iml" filepath="$PROJECT_DIR$/FizzBuzz/FizzBuzz.iml" />
+      <module fileurl="file://$PROJECT_DIR$/Basics/src/Hashmatique.iml" filepath="$PROJECT_DIR$/Basics/src/Hashmatique.iml" />
+      <module fileurl="file://$PROJECT_DIR$/Hasmatique/Hasmatique.iml" filepath="$PROJECT_DIR$/Hasmatique/Hasmatique.iml" />
+      <module fileurl="file://$PROJECT_DIR$/Puzzle/Puzzle.iml" filepath="$PROJECT_DIR$/Puzzle/Puzzle.iml" />
       <module fileurl="file://$PROJECT_DIR$/PuzzleJava/PuzzleJava.iml" filepath="$PROJECT_DIR$/PuzzleJava/PuzzleJava.iml" />
-      <module fileurl="file://$PROJECT_DIR$/StringManipulation/StringManipulation.iml" filepath="$PROJECT_DIR$/StringManipulation/StringManipulation.iml" />
-      <module fileurl="file://$PROJECT_DIR$/javaFun.iml" filepath="$PROJECT_DIR$/javaFun.iml" />
     </modules>
   </component>
 </project>
