@@ -3,6 +3,7 @@
   <component name="ProjectModuleManager">
     <modules>
       <module fileurl="file://$PROJECT_DIR$/Basics/Basics.iml" filepath="$PROJECT_DIR$/Basics/Basics.iml" />
+      <module fileurl="file://$PROJECT_DIR$/Exceptionally_Generic/Exceptionally_Generic.iml" filepath="$PROJECT_DIR$/Exceptionally_Generic/Exceptionally_Generic.iml" />
       <module fileurl="file://$PROJECT_DIR$/Basics/src/Exceptions.iml" filepath="$PROJECT_DIR$/Basics/src/Exceptions.iml" />
       <module fileurl="file://$PROJECT_DIR$/FizzBuzz/FizzBuzz.iml" filepath="$PROJECT_DIR$/FizzBuzz/FizzBuzz.iml" />
       <module fileurl="file://$PROJECT_DIR$/Basics/src/Hashmatique.iml" filepath="$PROJECT_DIR$/Basics/src/Hashmatique.iml" />
