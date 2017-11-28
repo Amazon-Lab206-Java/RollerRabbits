@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="UTF-8">
+<BunnysBedandBreakfast>
+    <breakfastMenu>
+        <item cateogry="junkfood">
+            <name>Gravy on top of more gravy</name>
+            <description>myocardInfarc</description>
+            <price>$4.99(excludes hospital bills)</price>
+    </breakfastMenu>
+
+    <lunchMenu>
+        <item category="entree">
+            <name>Chicken Salad</name>
+            <description>A salad with chicken</description>
+            <price>$10.99</price>
+        </item>
+        <item category="entree">
+            <name>Chicken Sandwich</name>
+            <description>A sandwich with chicken</description>
+            <price>$12.99</price>
+        </item>
+        <item category="entree">
+            <name>Pastrami Sandwich</name>
+            <description>A sandwich made with pastrami</description>
+            <price>$13.99</price>
+        </item>
+        <item category="beverage">
+            <name>Coca-Cola</name>
+            <description>A fizzy cola soda</description>
+            <price>$0.99</price>
+        </item>
+        <item category="beverage">
+            <name>Orange Juice</name>
+            <description>A juice made with oranges</description>
+            <price>$0.99</price>
+        </item>    
+    </lunchMenu>
+
+    <dinnerMenu>
+     <item cateogry="junkfood">
+            <name>Gravy on top of more gravy</name>
+            <description>myocardInfarc</description>
+            <price>$4.99(excludes hospital bills)</price>
+    </dinnerMenu>
+</BunnysBedandBreakfast>
