@@ -2,7 +2,7 @@ public class Human {
     protected int health=100;
     protected int strength=3;
     protected int stealth=3;
-    protected int intelligent=3;
+    protected int intelligence=3;
     private final String name;
 
     public Human(String name) {
