@@ -1,0 +1,13 @@
+.purpletrue {
+	height: 40px;
+    width: 40px;
+    background-color: pink;
+    display: inline-block;
+}
+
+.purplefalse {
+	height: 40px;
+    width: 40px;
+    background-color: black;
+    display: inline-block;
+}
