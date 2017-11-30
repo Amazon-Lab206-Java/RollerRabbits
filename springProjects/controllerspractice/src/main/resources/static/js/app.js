@@ -1,0 +1,1 @@
+alert("Hello World, this is an alert. You'll turn into a bunny in 10 seconds");

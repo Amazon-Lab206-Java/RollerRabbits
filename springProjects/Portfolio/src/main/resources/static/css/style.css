@@ -1,0 +1,28 @@
+h1, h3{
+text-align: center;	
+}
+img{
+	height:200px;
+	border-color:black;
+	border:solid;
+}
+.column{
+		
+    display: inline-block;
+    *display: inline; /* For IE7 */
+    zoom: 1; /* Trigger hasLayout */
+    width: 33%;
+    text-align: center;
+    vertical-align:top;
+}
+
+
+.boxies p {
+	border:solid;
+	border-color:black;
+	
+}
+
+.artsy img{
+	float:left;
+}
