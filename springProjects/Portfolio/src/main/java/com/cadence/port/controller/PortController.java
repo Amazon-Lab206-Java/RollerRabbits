@@ -7,7 +7,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 public class PortController {
 	@RequestMapping("/")
 	public String index() {
-		return "index.html";
+		return "index.jsp";
 	}
 	@RequestMapping("/projects")
 	public String projects() {
