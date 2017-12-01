@@ -14,3 +14,19 @@ src/main/webapp/WEB-INF/index.jsp
 
 src/main/resources/applications.properties file to contain the following code:
 spring.mvc.view.prefix: /WEB-INF/
+
+
+Working with sessions@Controller
+@SessionAttributes("sessionAttribute")
+public class Dashboard {
+    @RequestMapping("/")
+    public String index(@ModelAttribute("sessionAttribte") String sessionAttribute) {
+        System.out.println(sessionAttribute);
+        return "index";
+    }
+    @RequestMapping("/setSession")
+    public String setSession(Model model){
+        model.addAttribute("sessionAttribute", "exampleData");
+        return "redirect:/";
+    }
+}
