@@ -11,7 +11,7 @@
 		<h3>Submitted Info</h3>
 		<p>
 			<span>Name:</span>
-			<span class="float"><c:out value=${name}"/></span>
+			<span class="float"><c:out value="${name}"/></span>
 			</p>
 			<p>
 			<span>Dojo Location:</span>

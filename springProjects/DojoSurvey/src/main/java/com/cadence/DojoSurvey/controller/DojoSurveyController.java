@@ -19,15 +19,12 @@ public class DojoSurveyController {
 			@RequestParam("location") String location,
 			@RequestParam("language") String language,
 			@RequestParam(value="comment", required=false) String comment,
-			Model model
-			) {
+			Model model) {
 		
 		model.addAttribute("name", name);
 		model.addAttribute("location", location);
-		model.addAttribute("lanauge", language);
+		model.addAttribute("language", language);
 		model.addAttribute("comment", comment);
 		return "result.jsp";
-	}
-	
-			
+	}		
 }
