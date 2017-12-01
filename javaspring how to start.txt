@@ -1,0 +1,16 @@
+How to start java spring
+
+file> new > spring starter project
+create controller under src/main/java
+pom.xml>dependencies>add
+org.apache.tomcat.embed
+               tomcat-embed-jasper
+javax.servlet
+               jstl
+
+src/main/webapp/WEB-INF/index.jsp
+ <%@ taglib prefix = "c" uri = "http://java.sun.com/jsp/jstl/core" %>
+<c:out value="${2+2}"/>
+
+src/main/resources/applications.properties file to contain the following code:
+spring.mvc.view.prefix: /WEB-INF/
