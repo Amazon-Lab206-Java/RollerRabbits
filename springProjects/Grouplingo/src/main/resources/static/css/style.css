@@ -1,0 +1,32 @@
+.container {
+	padding-top: 50px;
+	width: 80%;
+	margin: 0 auto;
+}
+
+table {
+	width: 100%;
+	border-collapse: collapse;
+}
+
+th, td {
+	border: 1px solid black;
+	padding: 5px;
+}
+
+thead > tr {
+	background-color: #808080;	
+}
+
+tr {
+	text-align: center;
+}
+
+tbody > tr:nth-child(even) {
+	background-color: #DCDCDC;
+}
+
+.form-container {
+	width: 50%;
+	margin: 0 auto;
+}

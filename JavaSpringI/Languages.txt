@@ -1,0 +1,278 @@
+~*Controller*~
+package com.codingdojo.grouplanguages.controllers;
+
+import javax.validation.Valid;
+
+import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
+import org.springframework.validation.BindingResult;
+import org.springframework.web.bind.annotation.ModelAttribute;
+import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestMapping;
+
+import com.codingdojo.grouplanguages.models.Language;
+import com.codingdojo.grouplanguages.services.LanguageService;
+
+@Controller
+public class Languages {
+	private final LanguageService languageService;
+	
+	public Languages(LanguageService languageService) {
+		this.languageService = languageService;
+	}
+	
+	@RequestMapping("/")
+	public String index(@ModelAttribute("language") Language language, Model model) {
+		model.addAttribute("languages", languageService.getLanguages());
+		return "languages/index.jsp";
+	}
+	
+	@PostMapping("/languages")
+	public String createLanguages(@Valid @ModelAttribute("language") Language language, BindingResult result, Model model) {
+        if (result.hasErrors()) {
+        	model.addAttribute("languages", languageService.getLanguages());
+    		return "languages/index.jsp";
+        }else{
+        	languageService.addLanguage(language);
+            return "redirect:/";
+        }
+	}
+	
+	@RequestMapping("/languages/{id}")
+	public String showLanguage(Model model, @PathVariable("id") int id) {
+    	Language lang = languageService.getLanguage(id);
+    	model.addAttribute("id", id);
+    	model.addAttribute("language", lang);
+		return "languages/show.jsp";
+	}
+	
+	@RequestMapping("/languages/edit/{id}")
+	public String editLanguage(Model model, @PathVariable("id") int id) {
+    	Language lang = languageService.getLanguage(id);
+    	model.addAttribute("id", id);
+    	model.addAttribute("language", lang);
+		return "languages/edit.jsp";
+	}	
+	
+	@PostMapping("/languages/update/{id}")
+	public String updateLanguage(@Valid @ModelAttribute("language") Language language, BindingResult result, @PathVariable("id") int id) {
+        if (result.hasErrors()) {
+    		return "languages/edit.jsp";
+        }else{
+        	languageService.updateLanguage(id, language);
+            return "redirect:/";
+        }
+	}
+	
+	@RequestMapping("/languages/delete/{id}")
+	public String deleteLanguage(@PathVariable("id") int id) {
+    	languageService.deleteLanguage(id);
+        return "redirect:/";
+	}
+}
+
+~*~*~*Model*~*~*~*
+package com.codingdojo.grouplanguages.models;
+
+import javax.validation.constraints.NotNull;
+import javax.validation.constraints.Size;
+
+public class Language {
+    @Size(min = 2, max = 20, message="Name must be between 2 and 20 character")
+	private String name;
+    @Size(min = 2, max = 20, message="Creator must be between 2 and 20 character")
+	private String creator;
+    @Size(min = 1, message="Version cannot be empty")
+	private String version;
+	
+    public Language() {
+    }
+    
+	public String getName() {
+		return name;
+	}
+	public void setName(String name) {
+		this.name = name;
+	}
+	public String getCreator() {
+		return creator;
+	}
+	public void setCreator(String creator) {
+		this.creator = creator;
+	}
+	public String getVersion() {
+		return version;
+	}
+	public void setVersion(String version) {
+		this.version = version;
+	}
+	
+}
+
+~*~*~*~*Services*~*~*~*
+package com.codingdojo.grouplanguages.services;
+
+import java.util.ArrayList;
+import java.util.List;
+
+import org.springframework.stereotype.Service;
+
+import com.codingdojo.grouplanguages.models.Language;
+
+@Service
+public class LanguageService {
+	private List<Language> languages = new ArrayList<Language>();
+	
+	public List<Language> getLanguages() {
+		return languages;
+	}
+	
+	public void addLanguage(Language lang) {
+		languages.add(lang);
+	}
+	
+	public Language getLanguage(int id) {
+		return languages.get(id);
+	}
+	
+	public void updateLanguage(int id, Language lang) {
+		languages.set(id, lang);
+	}
+	
+	public void deleteLanguage(int id) {
+		languages.remove(id);
+	}	
+}
+~*~*~*~*JSP*~*~*~*
+
+===index.jsp===
+
+<%@ page language="java" contentType="text/html; charset=ISO-8859-1"
+    pageEncoding="ISO-8859-1"%>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+<%@ taglib prefix="form" uri="http://www.springframework.org/tags/form"%>
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html>
+<head>
+	<meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
+	<title>Languages</title>
+	<link rel="stylesheet" href="/css/style.css" />
+</head>
+<body>
+	<div class="container">
+		<table>
+			<thead>
+				<tr>
+					<th>Name</th>
+					<th>Creator</th>
+					<th>Version</th>
+					<th>Action</th>
+				</tr>
+			</thead>
+			<tbody>
+				<c:forEach var="lang" varStatus="loop" items="${languages}">
+					<tr>
+						<td>
+							<a href="/languages/${loop.index}"><c:out value="${lang.name}"/></a>
+						</td>
+						<td><c:out value="${lang.creator}"/></td>
+						<td><c:out value="${lang.version}"/></td>
+						<td>
+							<a href="/languages/edit/${loop.index}">Edit</a> | 
+							<a href="/languages/delete/${loop.index}">Delete</a>				
+						</td>
+					</tr>	
+				</c:forEach>							
+			</tbody>
+		</table>
+		
+		<p class='error'><form:errors path="language.*"/></p>
+		
+		<div class="form-container">
+			<form:form action="/languages" method="POST" modelAttribute="language">
+				<p>
+					<form:label path="name" for="name">Name</form:label>
+					<form:input path="name" class="input-size float" type="text" name="name"/>
+				</p>
+				<p>
+					<form:label path="creator" for="creator">Creator</form:label>
+					<form:input path="creator" class="input-size float" type="text" name="creator"/>
+				</p>
+				<p>
+					<form:label path="version" for="version">Version</form:label>
+					<form:input path="version" class="input-size float" type="text" name="version"/>
+				</p>
+				<input class="float" type="submit" value="Submit" />						
+			</form:form>
+		</div>
+				
+	</div>
+</body>
+</html>
+===edit===
+<%@ page language="java" contentType="text/html; charset=ISO-8859-1"
+    pageEncoding="ISO-8859-1"%>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+<%@ taglib prefix="form" uri="http://www.springframework.org/tags/form"%>
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html>
+<head>
+	<meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
+	<title>Languages</title>
+	<link rel="stylesheet" href="/css/style.css" />
+</head>
+<body>
+	<div class="container">
+		<div class="left-auto">
+			<a href="/languages/delete/${id}">Delete</a>
+			<a href="/">Dashboard</a>
+		</div>
+		
+		<p class='error'><form:errors path="language.*"/></p>
+		
+		<div class="form-container">
+			<form:form action="/languages/update/${id}" method="POST" modelAttribute="language">
+				<p>
+					<form:label path="name" for="name">Name</form:label>
+					<form:input path="name" class="input-size float" type="text" name="name"/>
+				</p>
+				<p>
+					<form:label path="creator" for="creator">Creator</form:label>
+					<form:input path="creator" class="input-size float" type="text" name="creator"/>
+				</p>
+				<p>
+					<form:label path="version" for="version">Version</form:label>
+					<form:input path="version" class="input-size float" type="text" name="version"/>
+				</p>
+				<input class="float" type="submit" value="Update" />						
+			</form:form>
+		</div>
+	</div>
+</body>
+</html>
+
+===show===
+<%@ page language="java" contentType="text/html; charset=ISO-8859-1"
+    pageEncoding="ISO-8859-1"%>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+<%@ taglib prefix="form" uri="http://www.springframework.org/tags/form"%>
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html>
+<head>
+	<meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
+	<title>Languages</title>
+	<link rel="stylesheet" href="/css/style.css" />
+</head>
+<body>
+	<div class="container">
+		<p class="float"><a href="/">Dashboard</a></p><br />
+		<p><c:out value="${language.name}"/></p>
+		<p><c:out value="${language.creator}"/></p>
+		<p><c:out value="${language.version}"/></p>
+		<p><c:out value="${language.creator}"/></p>
+		<p><a href="/languages/edit/${id}">Edit</a></p>
+		<p><a href="/languages/delete/${id}">Delete</a></p>	
+	</div>
+</body>
+</html>
