@@ -1,33 +1,36 @@
 package com.cadence.grouplingo.service;
 
-import java.util.ArrayList;
 import java.util.List;
 
 import org.springframework.stereotype.Service;
 
 import com.cadence.grouplingo.model.Lingo;
+import com.cadence.grouplingo.repository.LingoRepo;
 
 @Service
 public class LingoService {
-	private List<Lingo> lingos = new ArrayList<Lingo>();
+	private final LingoRepo lingoRepo;
+	public LingoService(LingoRepo lingoRepo) {
+		this.lingoRepo = lingoRepo;
+	}
 	
 	public List<Lingo> getLanguages() {
-		return lingos;
+		return lingoRepo.findAll();
 	}
 	
 	public void addLanguage(Lingo lang) {
-		lingos.add(lang);
+		lingoRepo.save(lang);
 	}
 	
-	public Lingo getLanguage(int id) {
-		return lingos.get(id);
+	public Lingo getLanguage(Long id) {
+		return lingoRepo.findOne(id);
 	}
 	
-	public void updateLanguage(int id, Lingo lang) {
-		lingos.set(id, lang);
+	public void updateLanguage(Lingo lang) {
+		lingoRepo.save(lang);
 	}
 	
-	public void deleteLanguage(int id) {
-		lingos.remove(id);
+	public void deleteLanguage(Long id) {
+		lingoRepo.delete(id);
 	}	
 }

@@ -24,13 +24,13 @@
 				<c:forEach var="lang" varStatus="loop" items="${languages}">
 					<tr>
 						<td>
-							<a href="/languages/${loop.index}"><c:out value="${lang.name}"/></a>
+							<a href="/languages/${lang.id}"><c:out value="${lang.name}"/></a>
 						</td>
 						<td><c:out value="${lang.creator}"/></td>
 						<td><c:out value="${lang.version}"/></td>
 						<td>
-							<a href="/languages/edit/${loop.index}">Edit</a> | 
-							<a href="/languages/delete/${loop.index}">Delete</a>				
+							<a href="/languages/edit/${lang.id}">Edit</a> | 
+							<a href="/languages/delete/${lang.id}">Delete</a>				
 						</td>
 					</tr>	
 				</c:forEach>							

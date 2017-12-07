@@ -40,7 +40,7 @@ public class GrouplingoController {
 		}
 		
 		@RequestMapping("/languages/{id}")
-		public String showLanguage(Model model, @PathVariable("id") int id) {
+		public String showLanguage(Model model, @PathVariable("id") Long id) {
 	    	Lingo lang = lingoService.getLanguage(id);
 	    	model.addAttribute("id", id);
 	    	model.addAttribute("language", lang);
@@ -48,7 +48,7 @@ public class GrouplingoController {
 		}
 		
 		@RequestMapping("/languages/edit/{id}")
-		public String editLanguage(Model model, @PathVariable("id") int id) {
+		public String editLanguage(Model model, @PathVariable("id") Long id) {
 			Lingo lang = lingoService.getLanguage(id);
 	    	model.addAttribute("id", id);
 	    	model.addAttribute("language", lang);
@@ -56,17 +56,17 @@ public class GrouplingoController {
 		}	
 		
 		@PostMapping("/languages/update/{id}")
-		public String updateLanguage(@Valid @ModelAttribute("language") Lingo language, BindingResult result, @PathVariable("id") int id) {
+		public String updateLanguage(@Valid @ModelAttribute("language") Lingo language, BindingResult result, @PathVariable("id") Long id) {
 	        if (result.hasErrors()) {
 	    		return "edit.jsp";
 	        }else{
-	        	lingoService.updateLanguage(id, language);
+	        	lingoService.updateLanguage(language);
 	            return "redirect:/";
 	        }
 		}
 		
 		@RequestMapping("/languages/delete/{id}")
-		public String deleteLanguage(@PathVariable("id") int id) {
+		public String deleteLanguage(@PathVariable("id") Long id) {
 			lingoService.deleteLanguage(id);
 	        return "redirect:/";
 		}
