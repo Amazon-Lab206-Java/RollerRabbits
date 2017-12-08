@@ -1,4 +1,4 @@
-package com.cadence.services;
+package com.cadence.lookify.services;
 
 import java.util.List;
 
@@ -6,6 +6,8 @@ import org.springframework.stereotype.Service;
 
 import com.cadence.lookify.models.Song;
 import com.cadence.lookify.repositories.SongRepo;
+
+
 @Service
 public class SongService {
 	private final SongRepo songRepo;
