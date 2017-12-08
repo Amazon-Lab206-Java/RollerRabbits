@@ -1,0 +1,96 @@
+~*~*~*one on one relationships*~*~*~*
+relationships/src/main/resources/application.properties
+
+spring.datasource.url=jdbc:mysql://localhost:3306/relationships
+spring.datasource.username=root
+spring.datasource.password=root
+spring.datasource.driver-class-name=com.mysql.jdbc.Driver
+spring.jpa.hibernate.ddl-auto=update
+
+src/main/java
+package 1:1
+
+models/Person.java
+ @OneToOne(mappedBy="person", cascade=CascadeType.ALL, fetch=FetchType.LAZY)
+    private License license;
+
+in licenses ; 
+ @OneToOne(fetch=FetchType.LAZY)
+    @JoinColumn(name="person_id")
+
+Annotations Used
+@OneToOne: Defines the 1:1 relationship with another entity. There are different options that you can have in the annotation and it is extremely important that you use the correct one depending on which side of the relationship your entity is.
+@OneToOne(mappedBy="person"): This will map the license attribute in the Person class to the person attribute in the License class. It represents the field that owns the relationship. This element is only specified on the inverse (non-owning) side of the association.
+@OneToOne(cascade=CascadeType.ALL): The operations that must be cascaded to the target of the association. This will make sure referential integrity is preserved in ALL actions.
+@OneToOne(fetch=FetchType.LAZY): Whether the association should be lazily loaded or must be eagerly fetched.
+LAZY: The association is fetched when needed
+EAGER: The association is fetched immediately.
+There are a few other options that you can have. We encourage you to visit the useful link for the 1:1 relationship.
+@JoinColumn(name="person_id"): Defines mapping for composite foreign keys. It indicates that the corresponding table to this entity has a foreign_key to the referenced table.
+
+~*~*~*one to many*~*~*~*
+@Entity
+@Table(name="dojos")
+public class Dojo {
+    
+    @Id
+    @GeneratedValue
+    private Long id;
+    private String name;
+    @Column(updatable=false)
+    private Date createdAt;
+    private Date updatedAt;
+    @OneToMany(mappedBy="dojo", fetch = FetchType.LAZY)
+    private List<Ninja> ninjas;
+    
+
+@Entity
+@Table(name="ninjas")
+public class Ninja {
+    @Id
+    @GeneratedValue
+    private Long id;
+    private String firstName;
+    private String lastName;
+    private int age;
+    @Column(updatable=false)
+    private Date createdAt;
+    private Date updatedAt;
+    @ManyToOne(fetch = FetchType.LAZY)
+    @JoinColumn(name="dojo_id")
+    private Dojo dojo;
+    
+    public Ninja() {
+        
+    }
+
+@OneToMany: Defines a many-valued association with one-to-many multiplicity. This may be used within an embeddable class contained within an entity class to specify a relationship to a collection of entities. Notice that in this case, our ninjas attribute is of type List<Ninja>.
+@OneToMany(mappedBy="dojo"): This will map the ninjas attribute in the Dojo class to the dojo attribute in the Ninja class.
+There are a few other options that you can have. We encourage you to visit the useful link for the One-to-Many relationship.
+@ManyToOne: Defines a single-valued association to another entity class that has many-to-one multiplicity. This may be used within an embeddable class to specify a relationship from the embeddable class to an entity class. Notice that our dojo attribute is referring to the dojo_id. Therefore, this attribute gives the the dojo that a specific ninja belongs to.
+@JoinColumn(name="dojo_id"): Defines mapping for composite foreign keys. It indicates that the corresponding table to this entity has a foreign_key to the referenced table.
+
+~*~*~*many to many~*~*~**
+ @ManyToMany(fetch = FetchType.LAZY)
+    @JoinTable(
+        name = "categories_products", 
+        joinColumns = @JoinColumn(name = "product_id"), 
+        inverseJoinColumns = @JoinColumn(name = "category_id")
+    )
+    private List<Category> categories;
+
+
+    @ManyToMany(fetch = FetchType.LAZY)
+    @JoinTable(
+        name = "categories_products", 
+        joinColumns = @JoinColumn(name = "category_id"), 
+        inverseJoinColumns = @JoinColumn(name = "product_id")
+    )
+    private List<Product> products;
+    public Dojo() {
+
+@ManyToMany: Defines a many-valued association with many-to-many multiplicity. You will have to use this annotation on both entities.
+@JoinTable: Defines the middle table the our entities will be mapped to.
+@JoinTable(name="categories_products"): The name of the middle table.
+joinColumns: The foreign key that matches the primary key of the embedded class when the tables is joined.
+inverseJoinColumns: The foreign key that that matched the foreign key of the opposite class when the tables are joined.

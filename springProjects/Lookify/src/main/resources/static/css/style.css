@@ -1,0 +1,116 @@
+.container {
+	width: 80%;
+	margin: 0 auto;
+}
+
+.table-display {
+	display: table;
+}
+
+.flex {
+	display: flex;
+}
+
+.searchHeader {
+	flex-direction: row;
+	align-items: center;
+	justify-content: space-between;
+}
+
+#leftHandSearchHeader {
+	width: 50%;
+	flex-direction: row;
+	align-items: center;
+	justify-content: space-between;
+}
+
+#welcome {
+	margin: 120px auto 0 auto;
+	text-align: center;
+}
+
+.header {
+	margin: 20px 0;
+}
+
+#dashboard-header {
+	flex-direction: row;
+	justify-content: space-between;
+}
+
+.songHeader {
+	flex-direction: row-reverse;
+}
+
+#links {
+	flex-direction: row;
+	justify-content: space-between;
+	width: 30%;
+}
+
+#searchText {
+	width: 145px;
+	height: 20px;
+	border: 1.5px solid black;
+	padding-left: 5px;
+}
+
+.button {
+	background-color: white;
+	border: 1.5px solid black;
+	height: 25px;
+	box-shadow: 3px 3px 2px black;
+}
+
+table {
+	width: 100%;
+	border-collapse: collapse;
+}
+
+#searchTable {
+	width: 85%;
+}
+
+th, td {
+	border: 1px solid black;
+	padding: 5px;
+}
+
+thead > tr {
+	background-color: #808080;	
+}
+
+tr {
+	text-align: center;
+}
+
+tbody > tr:nth-child(even) {
+	background-color: #DCDCDC;
+}
+
+.error {
+	color: red;
+}
+
+.song-form {
+	margin-top: 50px;
+	margin-left: 100px;
+	width: 40%;
+}
+
+.song-inputs {
+	flex-direction: row;
+	justify-content: space-between;	
+}
+
+.song-submit {
+	flex-direction: row-reverse;
+}
+.border {
+	border: 1.5px solid black;
+}
+
+#top-ten {
+	margin-left: 50px;
+	padding: 10px 30px;
+}
