@@ -12,8 +12,8 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 
-import com.codingdojo.lookify.models.Song;
-import com.codingdojo.lookify.services.SongService;
+import com.cadence.lookify.models.Song;
+import com.cadence.services.SongService;
 
 @Controller
 public class Songs {

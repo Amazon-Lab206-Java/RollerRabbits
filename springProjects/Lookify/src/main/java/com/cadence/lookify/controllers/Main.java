@@ -9,24 +9,14 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 
-import com.codingdojo.lookify.models.Song;
-import com.codingdojo.lookify.services.SongService;
-
-
-import org.springframework.stereotype.Controller;
-import org.springframework.ui.Model;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestMethod;
-import org.springframework.web.bind.annotation.RequestParam;
-
 import com.cadence.lookify.models.Song;
-import com.cadence.lookify.services.SongService;
+import com.cadence.services.SongService;
 
 @Controller
 public class Main {
 private final SongService songService;
 	
+
 	public Main(SongService songService) {
 		this.songService = songService;
 	}

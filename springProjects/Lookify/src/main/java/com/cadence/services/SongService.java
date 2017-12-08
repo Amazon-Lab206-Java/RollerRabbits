@@ -4,8 +4,8 @@ import java.util.List;
 
 import org.springframework.stereotype.Service;
 
-import com.codingdojo.lookify.models.Song;
-import com.codingdojo.lookify.repositories.SongRepo;
+import com.cadence.lookify.models.Song;
+import com.cadence.lookify.repositories.SongRepo;
 @Service
 public class SongService {
 	private final SongRepo songRepo;

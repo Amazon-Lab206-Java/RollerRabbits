@@ -7,9 +7,9 @@ import java.util.List;
 import org.springframework.data.repository.CrudRepository;
 import org.springframework.stereotype.Repository;
 
-import com.codingdojo.lookify.models.Song;
+import com.cadence.lookify.models.Song;
 
-public class SongRepo {
+
 
 	
 	@Repository
@@ -19,4 +19,3 @@ public class SongRepo {
 		List<Song> findByArtistContaining(String query);
 	}
 	
-}
