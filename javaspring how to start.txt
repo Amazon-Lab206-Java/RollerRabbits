@@ -8,9 +8,9 @@ file> new > spring starter project
 new spring start project dependencies
 1. jpa, mysql, web, dev tools.
 
-2. 
+2. resources
 application.properties
-
+spring.mvc.view.prefix: /WEB-INF/
 spring.datasource.url=jdbc:mysql://localhost:3306/<<YOUR_SCHEMA>>
 spring.datasource.username=<<dbuser>>
 spring.datasource.password=<<dbpassword>>
@@ -18,22 +18,38 @@ spring.datasource.driver-class-name=com.mysql.jdbc.Driver
 spring.jpa.hibernate.ddl-auto=update
 
 3. 
+create packages under src/main/java
 
+nameing convention:
+com.cadence.PROJECTNAME.controllers
 
-create controller under src/main/java
+controller
+model
+service
+repository (THIS IS AN INTERFACE, not a class)
 
+Under these packages, you can create individual .java files.
+
+4. 
 pom.xml>dependencies>add
 org.apache.tomcat.embed
                tomcat-embed-jasper
 javax.servlet
                jstl
-
+5. 
 src/main/webapp/WEB-INF/index.jsp
  <%@ taglib prefix = "c" uri = "http://java.sun.com/jsp/jstl/core" %>
-<c:out value="${2+2}"/>
+<%@ taglib prefix="form" uri="http://www.springframework.org/tags/form"%> // if there is a form
+
 
 src/main/resources/applications.properties file to contain the following code:
+
 spring.mvc.view.prefix: /WEB-INF/
+spring.datasource.url=jdbc:mysql://localhost:3306/<<YOUR_SCHEMA>>
+spring.datasource.username=<<dbuser>>
+spring.datasource.password=<<dbpassword>>
+spring.datasource.driver-class-name=com.mysql.jdbc.Driver
+spring.jpa.hibernate.ddl-auto=update
 
 pom.xml~*~*~*
 <dependency>
@@ -68,14 +84,8 @@ pom.xml~*~*~*
     <artifactId>spring-boot-starter-data-jpa</artifactId>
 </dependency>
 
-~*~*~*application.properties
 
-spring.datasource.url=jdbc:mysql://localhost:3306/<<YOUR_SCHEMA>>
-spring.datasource.username=<<dbuser>>
-spring.datasource.password=<<dbpassword>>
-spring.datasource.driver-class-name=com.mysql.jdbc.Driver
-spring.jpa.hibernate.ddl-auto=update
-Working with sessions@Controller
+
 @SessionAttributes("sessionAttribute")
 public class Dashboard {
     @RequestMapping("/")
@@ -188,3 +198,13 @@ dependencies
     <groupId>org.springframework.boot</groupId>
     <artifactId>spring-boot-starter-data-jpa</artifactId>
 </dependency>
+
+time 
+@PrePersist
+	void createdAt() {
+		this.createdAt = new Date();
+	}
+	
+	@PreUpdate
+	void updatedAt() {
+		this.updatedAt = new Date();
