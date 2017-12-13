@@ -11,7 +11,7 @@
 	<div class="container">
 		<h1>New Product</h1>
 		
-		<form:form action="/products" method="POST" modelAttribute="product">
+		<form:form action="/products/newProduct" method="POST" modelAttribute="product">
 			<p>
 				<form:label path="name">Name:</form:label>
 				<form:input type="text" path="name" />			

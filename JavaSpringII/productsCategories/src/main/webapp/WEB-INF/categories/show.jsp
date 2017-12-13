@@ -23,7 +23,7 @@
 				</ul>
 			</div>
 			
-			<form:form class="form" action="/products/addCategory" method="POST" modelAttribute="catProd">
+			<form:form class="form" action="/products/addCat" method="POST" modelAttribute="catProd">
 				<form:hidden path="category" value="${category.id}"></form:hidden>
 				<p>
 					<form:label path="product">Add Product</form:label>

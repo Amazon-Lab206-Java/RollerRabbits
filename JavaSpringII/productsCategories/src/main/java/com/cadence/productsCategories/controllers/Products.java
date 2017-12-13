@@ -10,6 +10,11 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 
+import com.cadence.productsCategories.models.CategoriesProducts;
+import com.cadence.productsCategories.models.Product;
+import com.cadence.productsCategories.services.CategoryService;
+import com.cadence.productsCategories.services.ProductService;
+
 @Controller
 @RequestMapping("/products")
 public class Products {
@@ -26,7 +31,7 @@ public class Products {
 		return "/products/new.jsp";
 	}
 	
-	@PostMapping
+	@PostMapping()
 	public String createProduct(@Valid @ModelAttribute("product") Product product, BindingResult result) {
 		if(result.hasErrors()) {
 			return "/products/new.jsp";
@@ -45,7 +50,7 @@ public class Products {
 		return "/products/show.jsp";
 	}
 	
-	@PostMapping
+	@PostMapping("/addCat")
 	
 	public String addCategory(@ModelAttribute("catProd") CategoriesProducts catProd) {
 		categoryService.addCategory(catProd);
