@@ -2,6 +2,8 @@ How to start java spring
 
 when starting a new project, be careful where you start it (work bench location.
 
+com.cadence.projectname.controllers
+
 step 0. 
 file> new > spring starter project
 
@@ -20,7 +22,7 @@ spring.jpa.hibernate.ddl-auto=update
 3. 
 create packages under src/main/java
 
-nameing convention:
+naming convention:
 com.cadence.PROJECTNAME.controllers
 
 controller
