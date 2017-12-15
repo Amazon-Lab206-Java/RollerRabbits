@@ -10,7 +10,8 @@ import com.cadence.countries.models.Country;
 public interface CountryRepo extends CrudRepository<Country, Long> {
 
 	
-	@Query(value="SELECT*FROMcountries", nativeQuery=true)
+	//@Query(value="SELECT*FROMcountries", nativeQuery=true)
+	@Query("SELECT c.name, l.language, l.percentage FROM Country c JOIN c.languages l WHERE language = ?1 ORDER BY percentage DESC")
 	List<Object[]> findCountriesByLanguageDesc(String language);
 	
 	@Query("SELECT c.name, COUNT(c.id) AS numberOfCities FROM Country c JOIN c.cities ci GROUP BY c.id ORDER BY numberOfCities DESC")

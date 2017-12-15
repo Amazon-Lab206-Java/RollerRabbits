@@ -1,5 +1,7 @@
 package com.cadence.countries.controllers;
 
+import java.util.List;
+
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 
@@ -15,12 +17,12 @@ public class ApiCtrl {
 	@RequestMapping("/")
 	public String index() {
 // ---- 1. What query would you run to get all the countries that speak Slovene? ----
-//		List<Object[]> countries = apiService.findCountriesByLanguage("Slovene");		
-//		for(Object[] row : countries) {
-//			System.out.println(row[0]);
-//			System.out.println(row[1]);
-//			System.out.println(row[2]);
-//		}
+		List<Object[]> countries = apiService.findCountriesByLanguage("Slovene");		
+		for(Object[] row : countries) {
+			System.out.println(row[0]);
+			System.out.println(row[1]);
+			System.out.println(row[2]);
+		}
 //		
 // ----	2. What query would you run to display the total number of cities for each country? ----
 //		List<Object[]> countries = apiService.findCountriesWithNumCities();

@@ -1,8 +1,12 @@
 package com.cadence.countries.models;
 
+import java.util.List;
+
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
+import javax.persistence.OneToMany;
 import javax.persistence.Table;
 
 @Entity
@@ -26,6 +30,11 @@ public class Country {
 	private String headOfState;
 	private Integer capital;
 	private String code2;
+	
+	@OneToMany(mappedBy="country", fetch = FetchType.LAZY)
+	private List<Language> languages;
+	@OneToMany(mappedBy="country", fetch = FetchType.LAZY)
+	private List<City> cities;
 	
 public Country() {
 		
@@ -157,6 +166,22 @@ public String getCode2() {
 
 public void setCode2(String code2) {
 	this.code2 = code2;
+}
+
+public List<Language> getLanguages() {
+	return languages;
+}
+
+public void setLanguages(List<Language> languages) {
+	this.languages = languages;
+}
+
+public List<City> getCities() {
+	return cities;
+}
+
+public void setCities(List<City> cities) {
+	this.cities = cities;
 }
 
 
