@@ -19,6 +19,10 @@ public class UserService {
         this.bCryptPasswordEncoder = bCryptPasswordEncoder;
     }
     
+    // 1
+    public void save(User user) {
+        userRepository.save(user);
+    }
     
     // 1
     public void saveWithUserRole(User user) {

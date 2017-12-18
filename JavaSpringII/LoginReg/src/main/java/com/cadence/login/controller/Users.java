@@ -1,6 +1,7 @@
 package com.cadence.login.controller;
 
 import java.security.Principal;
+import java.util.Date;
 
 import javax.servlet.http.HttpSession;
 import javax.validation.Valid;
@@ -64,6 +65,15 @@ public class Users {
         String email = principal.getName();
         model.addAttribute("currentUser", userService.findByEmail(email));
         return "homePage.jsp";
+    }
+    
+    @RequestMapping(value = {"/recordSignIn"})
+    public String recordSignIn(Principal principal) {
+        String email = principal.getName();
+        User user = userService.findByEmail(email);
+        user.setLastSignedIn(new Date());
+        userService.save(user);
+        return "redirect:/dashboard";
     }
     
     @RequestMapping(value = {"/dashboard"})
