@@ -1,5 +1,6 @@
 package com.cadence.login.validator;
 
+import org.apache.commons.validator.EmailValidator;
 import org.springframework.stereotype.Component;
 import org.springframework.validation.Errors;
 import org.springframework.validation.Validator;
@@ -24,5 +25,12 @@ public class UserValidator implements Validator {
             // 3
             errors.rejectValue("passwordConfirmation", "Match");
         }         
+        if (!EmailValidator.getInstance().isValid(user.getEmail())) {
+        	errors.rejectValue("email", "InvalidEmail");
+        }
+
+
     }
+    
+   
 }

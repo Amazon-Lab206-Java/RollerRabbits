@@ -61,8 +61,16 @@ public class Users {
     @RequestMapping(value = {"/", "/home"})
     public String home(Principal principal, Model model) {
         // 1
-        String username = principal.getName();
-        model.addAttribute("currentUser", userService.findByUsername(username));
+        String email = principal.getName();
+        model.addAttribute("currentUser", userService.findByEmail(email));
         return "homePage.jsp";
+    }
+    
+    @RequestMapping(value = {"/dashboard"})
+    public String dashboard(Principal principal, Model model) {
+        // 1
+        String email = principal.getName();
+        model.addAttribute("currentUser", userService.findByEmail(email));
+        return "dashboard.jsp";
     }
 }
