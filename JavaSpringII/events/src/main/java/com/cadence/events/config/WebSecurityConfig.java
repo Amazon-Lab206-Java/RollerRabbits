@@ -1,4 +1,4 @@
-package com.cadence.login.config;
+package com.cadence.events.config;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Bean;
@@ -35,7 +35,7 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
                 .and()
             .formLogin()
                 .loginPage("/login")
-                .defaultSuccessUrl("/recordSignIn")
+                .defaultSuccessUrl("/events")
                 .permitAll()
                 .and()
             .logout()

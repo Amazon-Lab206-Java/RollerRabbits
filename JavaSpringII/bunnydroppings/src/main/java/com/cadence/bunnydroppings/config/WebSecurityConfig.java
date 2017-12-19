@@ -1,4 +1,5 @@
-package com.cadence.login.config;
+package com.cadence.bunnydroppings.config;
+
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Bean;
@@ -35,7 +36,7 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
                 .and()
             .formLogin()
                 .loginPage("/login")
-                .defaultSuccessUrl("/recordSignIn")
+                .defaultSuccessUrl("/bright_ideas")
                 .permitAll()
                 .and()
             .logout()

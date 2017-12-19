@@ -13,7 +13,6 @@ new spring start project dependencies
 2. resources
 application.properties
 spring.mvc.view.prefix: /WEB-INF/
-spring.datasource.url=jdbc:mysql://localhost:3306/auth
 spring.datasource.url=jdbc:mysql://localhost:3306/<<YOUR_SCHEMA>>
 spring.datasource.username=root
 spring.datasource.password=root
@@ -277,7 +276,7 @@ This is how your dependencies in the pom.xml file should look like:
 User
 Role
 
-2. schema: auth(MySQL)
+2. schema: auth(MySQL) I called it logger
 
 3. application.properties
 spring.datasource.url=jdbc:mysql://localhost:3306/auth

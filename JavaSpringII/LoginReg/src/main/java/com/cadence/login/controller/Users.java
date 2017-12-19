@@ -83,4 +83,11 @@ public class Users {
         model.addAttribute("currentUser", userService.findByEmail(email));
         return "dashboard.jsp";
     }
+    
+    @RequestMapping("/admin")
+    public String adminPage(Principal principal, Model model) {
+        String email = principal.getName();
+        model.addAttribute("currentUser", userService.findByEmail(email));
+        return "adminPage.jsp";
+    }
 }
