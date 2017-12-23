@@ -8,6 +8,9 @@ import javax.persistence.Entity;
 import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.JoinTable;
+import javax.persistence.ManyToMany;
 import javax.persistence.OneToMany;
 import javax.persistence.PrePersist;
 import javax.persistence.PreUpdate;
@@ -44,12 +47,16 @@ public class User {
     private List<Idea> ideas;
     
     
-    @OneToMany(mappedBy="user", fetch = FetchType.LAZY)
-    private List<Like> likes;
+    @ManyToMany(fetch = FetchType.LAZY)
+    @JoinTable(
+        name = "likes", 
+        joinColumns = @JoinColumn(name = "user_id"), 
+        inverseJoinColumns = @JoinColumn(name = "idea_id")
+    )
+    private List<Idea> likes;
     
-    public User() {
-    	
-    }
+   
+    
     
     
 
@@ -133,13 +140,7 @@ public class User {
 			this.ideas = ideas;
 		}
 
-		public List<Like> getLikes() {
-			return likes;
-		}
-
-		public void setLikes(List<Like> likes) {
-			this.likes = likes;
-		}
+	
 		
 		
     	@PrePersist

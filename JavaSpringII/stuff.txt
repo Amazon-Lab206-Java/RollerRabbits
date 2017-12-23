@@ -1,0 +1,22 @@
+INSERT INTO `roles` (name) VALUES ('ROLE_USER');
+INSERT INTO `roles` (name) VALUES ('ROLE_ADMIN');
+
+
+user:
+firstName
+lastName
+email
+city
+state
+password
+passwordConfirmation
+
+
+event:
+name
+date
+city
+state
+host
+guests
+messages

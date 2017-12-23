@@ -10,7 +10,7 @@ file> new > spring starter project
 new spring start project dependencies
 1. jpa, mysql, web, dev tools, spring-boot-starter-security
 
-2. resources
+2. src/main/resources
 application.properties
 spring.mvc.view.prefix: /WEB-INF/
 spring.datasource.url=jdbc:mysql://localhost:3306/<<YOUR_SCHEMA>>
@@ -23,12 +23,14 @@ spring.jpa.hibernate.ddl-auto=update
 create packages under src/main/java
 
 naming convention:
-com.cadence.PROJECTNAME.controllers
+***com.cadence.PROJECTNAME.controllers
 
+configuration
 controller
 model
 service
 repository (THIS IS AN INTERFACE, not a class)
+validator
 
 Under these packages, you can create individual .java files.
 
@@ -48,37 +50,49 @@ src/main/webapp/WEB-INF/index.jsp
 
 
 pom.xml~*~*~*
-<dependency>
-    <groupId>org.springframework.boot</groupId>
-    <artifactId>spring-boot-starter-web</artifactId>
-</dependency>
-<dependency>
-    <groupId>org.springframework.boot</groupId>
-    <artifactId>spring-boot-starter-test</artifactId>
-    <scope>test</scope>
-</dependency>
-<dependency>
-    <groupId>org.apache.tomcat.embed</groupId>
-    <artifactId>tomcat-embed-jasper</artifactId>
-</dependency>
-<dependency>
-    <groupId>javax.servlet</groupId>
-    <artifactId>jstl</artifactId>
-</dependency>
-<dependency>
-    <groupId>org.springframework.boot</groupId>
-    <artifactId>spring-boot-devtools</artifactId>
-    <scope>runtime</scope>
-</dependency>
-<dependency>
-    <groupId>mysql</groupId>
-    <artifactId>mysql-connector-java</artifactId>
-    <scope>runtime</scope>
-</dependency>
-<dependency>
-    <groupId>org.springframework.boot</groupId>
-    <artifactId>spring-boot-starter-data-jpa</artifactId>
-</dependency>
+	<dependencies>
+		<dependency>
+			<groupId>org.springframework.boot</groupId>
+			<artifactId>spring-boot-starter-data-jpa</artifactId>
+		</dependency>
+		<dependency>
+			<groupId>org.springframework.boot</groupId>
+			<artifactId>spring-boot-starter-web</artifactId>
+		</dependency>
+
+		<dependency>
+			<groupId>org.springframework.boot</groupId>
+			<artifactId>spring-boot-devtools</artifactId>
+			<scope>runtime</scope>
+		</dependency>
+		<dependency>
+			<groupId>mysql</groupId>
+			<artifactId>mysql-connector-java</artifactId>
+			<scope>runtime</scope>
+		</dependency>
+		<dependency>
+			<groupId>org.springframework.boot</groupId>
+			<artifactId>spring-boot-starter-test</artifactId>
+			<scope>test</scope>
+		</dependency>
+		<dependency>
+			<groupId>org.apache.tomcat.embed</groupId>
+			<artifactId>tomcat-embed-jasper</artifactId>
+		</dependency>
+		<dependency>
+			<groupId>javax.servlet</groupId>
+			<artifactId>jstl</artifactId>
+		</dependency>
+		<dependency>
+			<groupId>org.springframework.boot</groupId>
+			<artifactId>spring-boot-starter-security</artifactId>
+		</dependency>
+		<dependency>
+    		<groupId>commons-validator</groupId>
+    		<artifactId>commons-validator</artifactId>
+    		<version>1.4.1</version>
+		</dependency>
+	</dependencies>
 
 ~*~*~*
 Dolphin mySQL Workbench
@@ -276,7 +290,7 @@ This is how your dependencies in the pom.xml file should look like:
 User
 Role
 
-2. schema: auth(MySQL) I called it logger
+2. schema: auth(MySQL)
 
 3. application.properties
 spring.datasource.url=jdbc:mysql://localhost:3306/auth

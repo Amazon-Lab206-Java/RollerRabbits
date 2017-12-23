@@ -7,7 +7,9 @@ import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
-import javax.persistence.ManyToOne;
+import javax.persistence.JoinTable;
+import javax.persistence.ManyToMany;
+import javax.persistence.OneToMany;
 import javax.persistence.Table;
 import javax.validation.constraints.Size;
 
@@ -26,50 +28,18 @@ public class Idea {
     private String likes;
    
     
-    @ManyToOne(fetch=FetchType.LAZY)
-    @JoinColumn (name="likes")
-    private Idea idea;
+    @ManyToMany(fetch=FetchType.LAZY)
+    @JoinTable(
+            name = "likes", 
+            joinColumns = @JoinColumn(name = "idea_id"), 
+            inverseJoinColumns = @JoinColumn(name = "user_id")
+        )
     
-    public User() {
-    	
-    }
-public class Idea {
-
+    private List<Idea> ideas;
+    
+    @OneToMany(mappedBy="idea", fetch = FetchType.LAZY)
+    private List<User> users;
+    
+   
+    
 }
-public Long getId() {
-	return id;
-}
-public void setId(Long id) {
-	this.id = id;
-}
-public String getFirstName() {
-	return firstName;
-}
-public void setFirstName(String firstName) {
-	this.firstName = firstName;
-}
-public String getBody() {
-	return body;
-}
-public void setBody(String body) {
-	this.body = body;
-}
-public String getLikes() {
-	return likes;
-}
-public void setLikes(String likes) {
-	this.likes = likes;
-}
-public List<Idea> getIdeas() {
-	return ideas;
-}
-public void setIdeas(List<Idea> ideas) {
-	this.ideas = ideas;
-}
-public List<Like> getLikes() {
-	return likes;
-}
-public void setLikes(List<Like> likes) {
-	this.likes = likes;
-}
-

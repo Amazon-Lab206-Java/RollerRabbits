@@ -149,7 +149,7 @@
 Create an event
 
 	<p><form:errors path="event.*"/></p>
-	<form:form method="POST" action="/newEvent" modelAttribute="event">
+	<form:form method="POST" action="/newEvent" modelAttribute="event">// shouldn't modelAttribute be "/newEvent"?
         <p>
             <form:label path="name">Name:</form:label>
             <form:input path="name"/>
